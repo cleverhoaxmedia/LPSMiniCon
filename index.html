@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LPSMinicon 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:         #d4197a;
+      --pink-light:   #fce8f3;
+      --pink-mid:     #f5b8d8;
+      --pink-dark:    #8f0f52;
+      --blue:         #1d5cb8;
+      --blue-light:   #e4eef9;
+      --blue-mid:     #93b9ec;
+      --blue-dark:    #0f3a78;
+      --teal:         #0ab5c0;
+      --teal-light:   #dff6f8;
+      --teal-mid:     #72d8de;
+      --teal-dark:    #066e76;
+      --purple:       #7246be;
+      --purple-light: #ede6f9;
+      --purple-mid:   #b89fe0;
+      --purple-dark:  #42287a;
+      --navy:         #160f3b;
+      --muted:        #7a6e98;
+      --border:       #e8daf3;
+      --surface:      #ffffff;
+      --bg:           #faf5fd;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--navy);
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════════
+       TOP NAV
+    ════════════════════════════ */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+      border-bottom: 3px solid var(--pink);
+    }
+
+    .topnav-brand { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; text-decoration: none; }
+    .topnav-brand em  { font-style: normal; color: var(--pink); }
+    .topnav-brand span { color: var(--blue-mid); }
+
+    .topnav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+
+    .topnav-links a {
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      padding: 0.35rem 0.75rem; border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .topnav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .topnav-links .nav-cta a { background: var(--pink); color: #fff; padding: 0.35rem 1rem; }
+    .topnav-links .nav-cta a:hover { background: var(--pink-dark); }
+
+    /* ════════════════════════════
+       HERO
+    ════════════════════════════ */
+    .hero {
+      background: var(--navy);
+      min-height: 480px; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 3rem 2rem;
+    }
+
+    .hero-bg-circles { position: absolute; inset: 0; pointer-events: none; }
+    .hero-bg-circles span { position: absolute; border-radius: 50%; }
+    .hero-bg-circles span:nth-child(1) { width: 420px; height: 420px; background: rgba(212,25,122,0.1);  top: -120px; right: -80px; }
+    .hero-bg-circles span:nth-child(2) { width: 280px; height: 280px; background: rgba(29,92,184,0.12);  bottom: -80px; left: 10%; }
+    .hero-bg-circles span:nth-child(3) { width: 160px; height: 160px; background: rgba(114,70,190,0.1); top: 40px; left: 40%; }
+
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--pink-mid); background: rgba(212,25,122,0.15); border: 1px solid rgba(212,25,122,0.3);
+      border-radius: 99px; padding: 0.3rem 0.9rem; margin-bottom: 1.25rem;
+    }
+
+    .hero-title { font-family: 'Fredoka', sans-serif; font-size: clamp(3.5rem, 8vw, 6rem); font-weight: 700; line-height: 0.95; color: #fff; margin-bottom: 0.75rem; }
+    .hero-title em  { font-style: normal; color: var(--pink); }
+    .hero-title span { color: var(--blue-mid); }
+
+    .hero-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; font-weight: 600; }
+
+    .hero-date { display: inline-flex; align-items: center; gap: 8px; font-family: 'Fredoka', sans-serif; font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 2rem; }
+    .hero-date i { color: var(--pink-mid); }
+
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600;
+      border-radius: 10px; padding: 0.65rem 1.4rem;
+      text-decoration: none; transition: transform 0.15s, opacity 0.15s; border: none; cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-2px); opacity: 0.92; }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--pink); color: #fff; }
+    .btn-outline  { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); }
+    .btn-blue     { background: var(--blue); color: #fff; }
+    .btn-lg { font-size: 1.1rem; padding: 0.8rem 2rem; }
+
+    .hero-image { width: 400px; height: 185px; border-radius: 14px; overflow: hidden; border: 2px solid rgba(212,25,122,0.35); flex-shrink: 0; background: #000; }
+    .hero-image img { width: 100%; height: 100%; object-fit: contain; }
+
+    /* ════════════════════════════
+       STAT BAR
+    ════════════════════════════ */
+    .stat-bar { background: var(--pink); padding: 0.9rem 2rem; }
+    .stat-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    .stat-item { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 700; }
+    .stat-item i { font-size: 16px; opacity: 0.8; }
+
+    /* ════════════════════════════
+       PAGE BODY
+    ════════════════════════════ */
+    .page-body {
+      max-width: 1100px; margin: 0 auto; padding: 3rem 2rem;
+      display: grid; grid-template-columns: 1fr 280px; gap: 2.5rem; align-items: start;
+    }
+
+    .main-content { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    /* ════════════════════════════
+       SHARED SECTION STYLES
+    ════════════════════════════ */
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
+
+    .section-icon { width: 32px; height: 32px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-icon.pink   { background: var(--pink-light);   color: var(--pink);   }
+    .section-icon.blue   { background: var(--blue-light);   color: var(--blue);   }
+    .section-icon.teal   { background: var(--teal-light);   color: var(--teal);   }
+    .section-icon.purple { background: var(--purple-light); color: var(--purple); }
+
+    .section-title { font-family: 'Fredoka', sans-serif; font-size: 1.4rem; font-weight: 600; color: var(--navy); }
+
+    .content-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.75rem; }
+
+    /* ════════════════════════════
+       ABOUT
+    ════════════════════════════ */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+    .about-image { border-radius: 12px; overflow: hidden; border: 1.5px solid var(--border); }
+    .about-image img { width: 100%; height: 220px; object-fit: cover; display: block; }
+    .about-body p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-highlights { display: flex; flex-direction: column; gap: 8px; margin-top: 1.25rem; }
+    .highlight-item { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; font-weight: 700; color: var(--navy); }
+    .highlight-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ════════════════════════════
+       LOCATION
+    ════════════════════════════ */
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .location-map { border-radius: 12px; overflow: hidden; border: 1.5px solid var(--border); }
+    .location-map img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .info-list { display: flex; flex-direction: column; gap: 1rem; }
+    .info-row { display: flex; gap: 12px; align-items: flex-start; }
+    .info-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .info-icon.pink   { background: var(--pink-light);   color: var(--pink);   }
+    .info-icon.blue   { background: var(--blue-light);   color: var(--blue);   }
+    .info-icon.teal   { background: var(--teal-light);   color: var(--teal);   }
+    .info-icon.purple { background: var(--purple-light); color: var(--purple); }
+    .info-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+    .info-value { font-size: 0.95rem; font-weight: 700; color: var(--navy); line-height: 1.4; }
+    .info-sub   { font-size: 0.82rem; color: var(--muted); margin-top: 1px; }
+
+    /* ════════════════════════════
+       TICKETS
+    ════════════════════════════ */
+    .tickets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .ticket-card { border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.18s, border-color 0.18s; }
+    .ticket-card:hover { transform: translateY(-3px); }
+    .ticket-card.featured { border-color: var(--pink-mid); border-width: 2px; }
+    .ticket-header { padding: 1.1rem 1.1rem 0.9rem; background: var(--bg); border-bottom: 1.5px solid var(--border); }
+    .ticket-card.featured .ticket-header { background: var(--pink-light); border-bottom-color: var(--pink-mid); }
+    .ticket-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: var(--pink); color: #fff; border-radius: 99px; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem; }
+    .ticket-name { font-family: 'Fredoka', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); }
+    .ticket-body { padding: 1rem 1.1rem 1.25rem; }
+    .ticket-price { display: flex; align-items: baseline; gap: 3px; margin-bottom: 0.9rem; }
+    .ticket-price-amount { font-family: 'Fredoka', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .ticket-price-label { font-size: 0.78rem; font-weight: 700; color: var(--muted); }
+    .ticket-features { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-bottom: 1.1rem; }
+    .ticket-features li { display: flex; align-items: flex-start; gap: 7px; font-size: 0.82rem; color: var(--muted); }
+    .ticket-features li i { font-size: 14px; color: var(--teal); flex-shrink: 0; margin-top: 2px; }
+    .ticket-cta { display: block; text-align: center; font-family: 'Fredoka', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.6rem; border-radius: 9px; text-decoration: none; transition: opacity 0.15s, transform 0.15s; }
+    .ticket-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .ticket-cta.pink    { background: var(--pink); color: #fff; }
+    .ticket-cta.blue    { background: var(--blue-light); color: var(--blue-dark); border: 1.5px solid var(--blue-mid); }
+    .ticket-cta.outline { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
+
+    /* ════════════════════════════
+       SCHEDULE
+    ════════════════════════════ */
+    .sched-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+
+    .sched-col-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
+    .sched-col-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--pink); flex-shrink: 0; }
+    .sched-col-dot.blue { background: var(--blue); }
+    .sched-col-label { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; color: var(--navy); }
+
+    .all-day-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: var(--blue-light); border: 1px solid var(--blue-mid); border-radius: 99px; padding: 0.2rem 0.75rem; margin-bottom: 1rem; }
+
+    .stage-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+    .stage-card { background: var(--pink-light); border: 1.5px solid var(--pink-mid); border-radius: 14px; padding: 1rem 0.9rem; transition: border-color 0.18s, transform 0.18s; }
+    .stage-card:hover { border-color: var(--pink); transform: translateY(-3px); }
+
+    .card-icon { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; color: var(--pink); font-size: 16px; margin-bottom: 0.6rem; }
+    .card-title { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
+    .card-time  { font-size: 0.7rem; font-weight: 700; color: var(--pink-dark); letter-spacing: 0.05em; }
+
+    .pre-event { display: flex; align-items: center; gap: 0.75rem; background: var(--teal-light); border: 1.5px solid #a8e6ea; border-radius: 12px; padding: 0.85rem 1rem; margin-bottom: 1.25rem; }
+    .pre-event i { color: var(--teal); font-size: 20px; flex-shrink: 0; }
+    .pre-event-title { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; color: var(--teal-dark); }
+    .pre-event-time  { font-size: 0.7rem; font-weight: 700; color: var(--teal); letter-spacing: 0.05em; margin-top: 1px; }
+
+    .timeline { position: relative; padding-left: 1.6rem; }
+    .timeline::before { content: ''; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px; background: var(--border); border-radius: 2px; }
+
+    .t-event { position: relative; margin-bottom: 0.75rem; }
+    .t-event::before { content: ''; position: absolute; left: -1.6rem; top: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2.5px solid var(--blue); z-index: 1; }
+    .t-event.opening::before { border-color: var(--purple); background: var(--purple-light); }
+
+    .t-inner { background: var(--blue-light); border: 1.5px solid var(--blue-mid); border-left: 3px solid var(--blue); border-radius: 0 12px 12px 0; padding: 0.65rem 0.9rem; transition: transform 0.18s; }
+    .t-event.opening .t-inner { border-left-color: var(--purple); border-color: var(--purple-mid); background: var(--purple-light); }
+    .t-event:hover .t-inner { transform: translateX(3px); }
+
+    .t-time  { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.15rem; }
+    .t-event.opening .t-time { color: var(--purple); }
+    .t-title { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; color: var(--navy); }
+
+    .t-gap { position: relative; margin-bottom: 0.75rem; padding: 0.4rem 0.9rem; display: flex; align-items: center; gap: 8px; }
+    .t-gap::before { content: ''; position: absolute; left: -1.6rem; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; border-radius: 50%; background: var(--bg); border: 2px dashed var(--border); }
+    .t-gap-line { flex: 1; height: 1.5px; background: repeating-linear-gradient(to right, var(--border) 0, var(--border) 5px, transparent 5px, transparent 10px); }
+    .t-gap-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+
+    /* ════════════════════════════
+       FAQ
+    ════════════════════════════ */
+    details { border-bottom: 1.5px solid var(--border); padding: 1rem 0; }
+    details:last-child { border-bottom: none; }
+    details summary { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; color: var(--navy); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    details summary i { font-size: 16px; color: var(--muted); flex-shrink: 0; transition: transform 0.2s; }
+    details[open] summary i { transform: rotate(180deg); }
+    details p { font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem; line-height: 1.6; }
+
+    /* ════════════════════════════
+       SIDEBAR
+    ════════════════════════════ */
+    .sidebar { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 1rem; }
+
+    .sidebar-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; }
+
+    .sidebar-card-header { padding: 0.9rem 1.1rem; border-bottom: 1.5px solid var(--border); font-family: 'Fredoka', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+    .sidebar-card-header i { font-size: 16px; color: var(--muted); }
+
+    .sidebar-nav { list-style: none; padding: 0.5rem 0; }
+    .sidebar-nav li a { display: flex; align-items: center; gap: 10px; padding: 0.6rem 1.1rem; font-size: 0.88rem; font-weight: 700; color: var(--navy); text-decoration: none; transition: background 0.15s, color 0.15s; }
+    .sidebar-nav li a:hover { background: var(--bg); color: var(--pink); }
+    .sidebar-nav li a i { font-size: 16px; color: var(--muted); width: 18px; flex-shrink: 0; }
+    .sidebar-nav li a:hover i { color: var(--pink); }
+    .sidebar-nav li:not(:last-child) a { border-bottom: 1px solid var(--border); }
+
+    .sidebar-cta { padding: 1.1rem; }
+    .sidebar-cta .btn { width: 100%; justify-content: center; font-size: 0.92rem; }
+
+    .sidebar-mini-info { padding: 0.6rem 1.1rem; }
+    .sidebar-mini-info-row { display: flex; align-items: center; gap: 7px; padding: 0.35rem 0; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+    .sidebar-mini-info-row i { font-size: 14px; color: var(--pink); }
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
+    .site-footer { background: var(--navy); padding: 2.5rem 2rem 2rem; margin-top: 4rem; }
+    .site-footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: 'Fredoka', sans-serif; font-size: 1.4rem; font-weight: 700; color: #fff; }
+    .footer-brand em  { font-style: normal; color: var(--pink); }
+    .footer-brand span { color: var(--blue-mid); }
+    .footer-links { display: flex; gap: 1.25rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); font-weight: 600; width: 100%; margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); }
+
+    /* ════════════════════════════
+       MENU MODAL
+    ════════════════════════════ */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(22,15,59,0.6); backdrop-filter: blur(3px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--surface); border-radius: 20px; border: 1.5px solid var(--border);
+      max-width: 580px; width: 100%; max-height: 85vh; overflow-y: auto;
+      box-shadow: 0 24px 60px rgba(22,15,59,0.25);
+    }
+    .modal-header {
+      position: sticky; top: 0; background: var(--surface);
+      border-bottom: 1.5px solid var(--border); border-radius: 20px 20px 0 0;
+      padding: 1.1rem 1.4rem; display: flex; align-items: center; justify-content: space-between;
+    }
+    .modal-title { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); }
+    .modal-close {
+      width: 32px; height: 32px; border-radius: 8px; border: none; cursor: pointer;
+      background: var(--bg); color: var(--muted); font-size: 18px;
+      display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+    }
+    .modal-close:hover { background: var(--pink-light); color: var(--pink); }
+    .modal-body { padding: 1.4rem; }
+    .menu-section-title {
+      font-family: 'Fredoka', sans-serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 1rem; padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .menu-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .menu-item:last-of-type { border-bottom: none; }
+    .menu-item-info { flex: 1; }
+    .menu-item-name { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
+    .menu-item-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .menu-item-price { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 700; color: var(--pink); white-space: nowrap; }
+    .menu-note { font-size: 0.8rem; color: var(--muted); font-weight: 600; margin-top: 1rem; text-align: center; }
+
+    .pre-event { cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+    .pre-event:hover { background: #c8eff1; border-color: var(--teal); }
+    .pre-event-menu-hint { font-size: 0.72rem; font-weight: 700; color: var(--teal-dark); letter-spacing: 0.05em; margin-top: 3px; text-decoration: underline; }
+
+    /* ════════════════════════════
+       CONTESTS SECTION
+    ════════════════════════════ */
+    .contests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contest-card {
+      border: 1.5px solid var(--border); border-radius: 14px;
+      padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem;
+      transition: border-color 0.18s, transform 0.18s;
+    }
+    .contest-card:hover { transform: translateY(-2px); border-color: var(--pink-mid); }
+    .contest-card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+    }
+    .contest-card-body { flex: 1; }
+    .contest-card-title { font-family: 'Fredoka', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .contest-card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+
+    /* ════════════════════════════
+       CONTEST FLYOUTS
+    ════════════════════════════ */
+    .flyout-overlay {
+      display: none; position: fixed; inset: 0; z-index: 400;
+      background: rgba(22,15,59,0.55); backdrop-filter: blur(3px);
+    }
+    .flyout-overlay.open { display: block; }
+
+    .flyout-panel {
+      position: fixed; top: 0; right: -560px; width: 100%; max-width: 500px;
+      height: 100vh; overflow-y: auto;
+      background: var(--surface); border-left: 2px solid var(--border);
+      box-shadow: -12px 0 48px rgba(22,15,59,0.18);
+      z-index: 401; transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column;
+    }
+    .flyout-panel.open { right: 0; }
+
+    .flyout-header {
+      position: sticky; top: 0;
+      background: var(--navy); color: #fff;
+      padding: 1.1rem 1.4rem; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 3px solid var(--pink); z-index: 1; flex-shrink: 0;
+    }
+    .flyout-title { font-family: 'Fredoka', sans-serif; font-size: 1.35rem; font-weight: 700; }
+    .flyout-title em { font-style: normal; color: var(--pink); }
+    .flyout-close {
+      width: 34px; height: 34px; border-radius: 8px; border: none; cursor: pointer;
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); font-size: 18px;
+      display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+    }
+    .flyout-close:hover { background: rgba(212,25,122,0.35); color: #fff; }
+
+    .flyout-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .flyout-rules {
+      background: var(--purple-light); border: 1.5px solid var(--purple-mid);
+      border-radius: 14px; padding: 1rem 1.2rem;
+    }
+    .flyout-rules-title {
+      font-family: 'Fredoka', sans-serif; font-size: 0.95rem; font-weight: 700;
+      color: var(--purple-dark); margin-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .flyout-rules ol { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.35rem; }
+    .flyout-rules li { font-size: 0.83rem; color: var(--navy); line-height: 1.5; }
+
+    .flyout-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .form-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+    .form-input {
+      padding: 0.6rem 0.9rem; border: 1.5px solid var(--border); border-radius: 10px;
+      font-family: 'Nunito', sans-serif; font-size: 0.95rem; color: var(--navy);
+      background: var(--bg); outline: none; transition: border-color 0.15s, box-shadow 0.15s; width: 100%;
+    }
+    .form-input:focus { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(212,25,122,0.1); }
+    .form-input::placeholder { color: var(--muted); opacity: 0.55; }
+    .form-hint { font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
+
+    .url-field-wrap { position: relative; }
+    .url-field-wrap > i { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 15px; pointer-events: none; }
+    .url-field-wrap .form-input { padding-left: 2.3rem; }
+
+    .drop-zone {
+      border: 2px dashed var(--border); border-radius: 14px; padding: 1.75rem 1rem;
+      text-align: center; cursor: pointer; transition: border-color 0.15s, background 0.15s; background: var(--bg);
+    }
+    .drop-zone:hover { border-color: var(--pink-mid); background: var(--pink-light); }
+    .drop-zone.drag-over { border-color: var(--pink); background: var(--pink-light); }
+    .drop-zone.has-file { border-color: var(--teal); background: var(--teal-light); border-style: solid; }
+    .drop-zone > i { font-size: 2rem; color: var(--muted); display: block; margin-bottom: 0.4rem; }
+    .drop-zone.drag-over > i, .drop-zone:hover > i { color: var(--pink); }
+    .drop-zone.has-file > i { color: var(--teal); }
+    .drop-zone-label { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; color: var(--navy); }
+    .drop-zone-sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+    .drop-zone-filename { font-family: 'Fredoka', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--teal-dark); margin-top: 0.25rem; }
+    #art-file-input { display: none; }
+
+    .flyout-actions {
+      display: flex; gap: 0.75rem; padding: 1.1rem 1.4rem;
+      border-top: 1.5px solid var(--border); background: var(--surface);
+      position: sticky; bottom: 0; flex-shrink: 0;
+    }
+    .flyout-actions .btn { flex: 1; justify-content: center; }
+    .btn-cancel {
+      background: var(--bg); color: var(--navy); border: 1.5px solid var(--border);
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; border-radius: 10px;
+    }
+    .btn-cancel:hover { background: var(--border); transform: none; opacity: 1; }
+
+    .form-success {
+      display: none; text-align: center; padding: 3rem 1.5rem; flex: 1;
+      flex-direction: column; align-items: center; justify-content: center;
+    }
+    .form-success.visible { display: flex; }
+    .form-success i { font-size: 3rem; color: var(--teal); margin-bottom: 1rem; }
+    .form-success-title { font-family: 'Fredoka', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+    .form-success-sub { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ════════════════════════════
+       RESPONSIVE
+    ════════════════════════════ */
+    @media (max-width: 860px) {
+      .page-body { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .about-grid, .location-grid, .sched-grid, .contests-grid { grid-template-columns: 1fr; }
+      .tickets-grid { grid-template-columns: 1fr; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .topnav-links { display: none; }
+      .stage-cards { grid-template-columns: 1fr; }
+      .flyout-panel { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top Nav ── -->
+  <nav class="topnav">
+    <a href="#top" class="topnav-brand"><img src="LPSMiniConLogo.png" alt="LPS Minicon 2026" style="height:38px;display:block;mix-blend-mode:screen;"></a>
+    <ul class="topnav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#contests">Contests</a></li>
+      <li><a href="#tickets">Tickets</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li class="nav-cta"><a href="https://app.showslinger.com/v4/mini-lps-convention-littl?from=%2Fpromo_widget_v3%2Fcombo_widget%3Fid%3D31%26origin_url%3Dhttps%253A%252F%252Fwww-upstagecomedylounge-net.filesusr.com%252Fhtml%252Fbc6dbb_f5e3a8b3c29a627d58ee176b05579429.html%26secure_code%3D6a56b1c636&promo_widget_v3_id=31" target="_blank">Get Tickets</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="top">
+    <div class="hero-bg-circles"><span></span><span></span><span></span></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow"><i class="ti ti-star" style="font-size:12px;"></i> A Littlest Pet Shop Fan Convention</div>
+        <img src="LPSMiniConLogo.png" alt="Littlest Pet Shop Minicon 2026" style="display:block;height:200px;margin-bottom:1rem;object-fit:contain;mix-blend-mode:screen;">
+        <p class="hero-subtitle">The first annual LPS fan gathering!</p>
+        <div class="hero-date"><i class="ti ti-calendar-event"></i> Sunday, August 9, 2026</div>
+        <div class="hero-actions">
+          <a href="https://app.showslinger.com/v4/mini-lps-convention-littl?from=%2Fpromo_widget_v3%2Fcombo_widget%3Fid%3D31%26origin_url%3Dhttps%253A%252F%252Fwww-upstagecomedylounge-net.filesusr.com%252Fhtml%252Fbc6dbb_f5e3a8b3c29a627d58ee176b05579429.html%26secure_code%3D6a56b1c636&promo_widget_v3_id=31" class="btn btn-primary btn-lg" target="_blank"><i class="ti ti-ticket"></i> Get Tickets</a>
+          <a href="#schedule" class="btn btn-outline btn-lg"><i class="ti ti-calendar"></i> View Schedule</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stat Bar ── -->
+  <div class="stat-bar">
+    <div class="stat-bar-inner">
+      <div class="stat-item"><i class="ti ti-calendar"></i> August 9, 2026</div>
+      <div class="stat-item"><i class="ti ti-map-pin"></i> Upstage Comedy Lounge, San Antonio TX</div>
+      <div class="stat-item"><i class="ti ti-ticket"></i> Tickets from $25</div>
+    </div>
+  </div>
+
+  <!-- ── Page Body ── -->
+  <div class="page-body">
+    <main class="main-content">
+
+      <!-- About -->
+      <section id="about">
+        <div class="section-header">
+          <div class="section-icon pink"><i class="ti ti-heart"></i></div>
+          <h2 class="section-title">About LPSMinicon</h2>
+        </div>
+        <div class="content-card">
+          <div class="about-grid">
+            <div>
+              <div class="about-body">
+                <p>This event is for all Littlest Pet Shop lovers! We're going to have a film contest for best LPS video, an art contest, LPS Bingo, and a trivia game.</p>
+                <p>We'll also have an auction booth and a trading table. Come along and meet other LPS lovers on August 9th!</p>
+              </div>
+              <div class="about-highlights">
+                <div class="highlight-item"><div class="highlight-dot" style="background:var(--pink)"></div> Film contest for best LPS video &amp; art contest</div>
+                <div class="highlight-item"><div class="highlight-dot" style="background:var(--blue)"></div> LPS Bingo &amp; trivia game</div>
+                <div class="highlight-item"><div class="highlight-dot" style="background:var(--teal)"></div> Auction booth &amp; trading table</div>
+                <div class="highlight-item"><div class="highlight-dot" style="background:var(--purple)"></div> Meet other LPS lovers!</div>
+              </div>
+            </div>
+            <div class="about-image">
+              <img src="https://picsum.photos/seed/fancon/500/440" alt="Fans at a convention">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location & Hours -->
+      <section id="location">
+        <div class="section-header">
+          <div class="section-icon blue"><i class="ti ti-map-pin"></i></div>
+          <h2 class="section-title">Location &amp; Hours</h2>
+        </div>
+        <div class="content-card">
+          <div class="location-grid">
+            <div class="location-map">
+              <img src="https://picsum.photos/seed/venue42/500/400" alt="Venue exterior">
+            </div>
+            <div class="info-list">
+              <div class="info-row">
+                <div class="info-icon blue"><i class="ti ti-building"></i></div>
+                <div><div class="info-label">Venue</div><div class="info-value">Upstage Comedy Lounge</div><div class="info-sub">4441 Walzem Road<br>San Antonio, TX 78218</div></div>
+              </div>
+              <div class="info-row">
+                <div class="info-icon pink"><i class="ti ti-calendar-event"></i></div>
+                <div><div class="info-label">Date</div><div class="info-value">Sunday, August 9, 2026</div><div class="info-sub">Rain or shine</div></div>
+              </div>
+              <div class="info-row">
+                <div class="info-icon purple"><i class="ti ti-car"></i></div>
+                <div><div class="info-label">Parking</div><div class="info-value">Free parking on-site</div><div class="info-sub">Additional street parking nearby</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tickets -->
+      <section id="tickets">
+        <div class="section-header">
+          <div class="section-icon teal"><i class="ti ti-ticket"></i></div>
+          <h2 class="section-title">Get Tickets</h2>
+        </div>
+        <div class="content-card">
+          <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;">Available online in advance. All ticket types are purchased through the same link below.</p>
+          <div class="tickets-grid">
+
+            <div class="ticket-card">
+              <div class="ticket-header"><div class="ticket-name">General Admission</div></div>
+              <div class="ticket-body">
+                <div class="ticket-price"><div class="ticket-price-amount">$25</div><div class="ticket-price-label">/ person</div></div>
+                <ul class="ticket-features">
+                  <li><i class="ti ti-check"></i> Full event access</li>
+                  <li><i class="ti ti-check"></i> Trading table &amp; auction booth</li>
+                  <li><i class="ti ti-check"></i> All activities &amp; games</li>
+                </ul>
+                <a href="https://app.showslinger.com/v4/mini-lps-convention-littl?from=%2Fpromo_widget_v3%2Fcombo_widget%3Fid%3D31%26origin_url%3Dhttps%253A%252F%252Fwww-upstagecomedylounge-net.filesusr.com%252Fhtml%252Fbc6dbb_f5e3a8b3c29a627d58ee176b05579429.html%26secure_code%3D6a56b1c636&promo_widget_v3_id=31" class="ticket-cta outline" target="_blank">Buy Online</a>
+              </div>
+            </div>
+
+            <div class="ticket-card featured">
+              <div class="ticket-header"><div class="ticket-badge">Best Value</div><div class="ticket-name">Twin-Ticket</div></div>
+              <div class="ticket-body">
+                <div class="ticket-price"><div class="ticket-price-amount">$40</div><div class="ticket-price-label">/ 2 people</div></div>
+                <ul class="ticket-features">
+                  <li><i class="ti ti-check"></i> 2 tickets for $40 ($20/person)</li>
+                  <li><i class="ti ti-check"></i> Saves $10 vs. two individual tickets</li>
+                  <li><i class="ti ti-check"></i> Full event access</li>
+                  <li><i class="ti ti-check"></i> All activities &amp; games</li>
+                </ul>
+                <a href="https://app.showslinger.com/v4/mini-lps-convention-littl?from=%2Fpromo_widget_v3%2Fcombo_widget%3Fid%3D31%26origin_url%3Dhttps%253A%252F%252Fwww-upstagecomedylounge-net.filesusr.com%252Fhtml%252Fbc6dbb_f5e3a8b3c29a627d58ee176b05579429.html%26secure_code%3D6a56b1c636&promo_widget_v3_id=31" class="ticket-cta pink" target="_blank">Buy Online</a>
+              </div>
+            </div>
+
+            <div class="ticket-card">
+              <div class="ticket-header"><div class="ticket-badge" style="background:var(--purple);">VIP Pack</div><div class="ticket-name">VIP Pack</div></div>
+              <div class="ticket-body">
+                <div class="ticket-price"><div class="ticket-price-amount">$300</div><div class="ticket-price-label">/ pack</div></div>
+                <ul class="ticket-features">
+                  <li><i class="ti ti-check"></i> 6 tickets included</li>
+                  <li><i class="ti ti-check"></i> Booth seating</li>
+                  <li><i class="ti ti-check"></i> Mega-Gift Bag</li>
+                  <li><i class="ti ti-check"></i> Full event access &amp; all activities</li>
+                </ul>
+                <a href="https://app.showslinger.com/v4/mini-lps-convention-littl?from=%2Fpromo_widget_v3%2Fcombo_widget%3Fid%3D31%26origin_url%3Dhttps%253A%252F%252Fwww-upstagecomedylounge-net.filesusr.com%252Fhtml%252Fbc6dbb_f5e3a8b3c29a627d58ee176b05579429.html%26secure_code%3D6a56b1c636&promo_widget_v3_id=31" class="ticket-cta blue" target="_blank">Buy Online</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule -->
+      <section id="schedule">
+        <div class="section-header">
+          <div class="section-icon blue"><i class="ti ti-calendar"></i></div>
+          <h2 class="section-title">Event Schedule</h2>
+        </div>
+        <div class="content-card">
+          <div class="sched-grid">
+
+            <div>
+              <div class="sched-col-header"><div class="sched-col-dot"></div><div class="sched-col-label">Main Stage</div></div>
+              <div class="all-day-tag"><i class="ti ti-clock" style="font-size:12px;"></i> All day &mdash; 1:00 &ndash; 5:00 PM</div>
+              <div class="stage-cards" style="margin-top:1rem;">
+                <div class="stage-card"><div class="card-icon"><i class="ti ti-circle-plus"></i></div><div class="card-title">Button Making</div><div class="card-time">1:00 &ndash; 5:00 PM</div></div>
+                <div class="stage-card"><div class="card-icon"><i class="ti ti-gavel"></i></div><div class="card-title">Silent Auction</div><div class="card-time">1:00 &ndash; 5:00 PM</div></div>
+                <div class="stage-card"><div class="card-icon"><i class="ti ti-camera"></i></div><div class="card-title">Photobooth</div><div class="card-time">1:00 &ndash; 5:00 PM</div></div>
+                <div class="stage-card"><div class="card-icon"><i class="ti ti-shopping-bag"></i></div><div class="card-title">Trade Stall</div><div class="card-time">1:00 &ndash; 5:00 PM</div></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="sched-col-header"><div class="sched-col-dot blue"></div><div class="sched-col-label">Activities</div></div>
+              <div class="pre-event" onclick="document.getElementById('menu-modal').classList.add('open')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')this.click()">
+                <i class="ti ti-tools-kitchen-2"></i>
+                <div>
+                  <div class="pre-event-title">Order &amp; Eat</div>
+                  <div class="pre-event-time">12:00 &ndash; 1:00 PM</div>
+                  <div class="pre-event-menu-hint">Click Here For The Menu!</div>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="t-event opening"><div class="t-inner"><div class="t-time">1:00 &ndash; 1:10 PM</div><div class="t-title">Opening Ceremony</div></div></div>
+                <div class="t-gap"><div class="t-gap-line"></div><div class="t-gap-label">20 min break</div><div class="t-gap-line"></div></div>
+                <div class="t-event"><div class="t-inner"><div class="t-time">1:30 &ndash; 2:00 PM</div><div class="t-title">Bingo</div></div></div>
+                <div class="t-gap"><div class="t-gap-line"></div><div class="t-gap-label">1 hr break</div><div class="t-gap-line"></div></div>
+                <div class="t-event"><div class="t-inner"><div class="t-time">3:00 &ndash; 3:30 PM</div><div class="t-title">Trivia</div></div></div>
+                <div class="t-event" onclick="openFlyout('art')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFlyout('art')" style="cursor:pointer;"><div class="t-inner"><div class="t-time">3:30 &ndash; 4:00 PM</div><div class="t-title">Art Contest <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;letter-spacing:0.05em;">Click to Submit &rarr;</span></div></div></div>
+                <div class="t-event" onclick="openFlyout('film')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openFlyout('film')" style="cursor:pointer;"><div class="t-inner"><div class="t-time">4:00 &ndash; 5:00 PM</div><div class="t-title">Film Festival <span style="font-size:0.7rem;font-weight:700;color:var(--pink);display:block;letter-spacing:0.05em;">Click to Submit &rarr;</span></div></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Contests -->
+      <section id="contests">
+        <div class="section-header">
+          <div class="section-icon pink"><i class="ti ti-trophy"></i></div>
+          <h2 class="section-title">Contests</h2>
+        </div>
+        <div class="content-card">
+          <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;">Think you've got what it takes? Submit your entry for the Film Contest or Art Contest before the event — winners are celebrated live on August 9th!</p>
+          <div class="contests-grid">
+
+            <div class="contest-card">
+              <div class="contest-card-icon" style="background:var(--pink-light);color:var(--pink);"><i class="ti ti-movie"></i></div>
+              <div class="contest-card-body">
+                <div class="contest-card-title">Film Contest</div>
+                <div class="contest-card-desc">Submit your best LPS-inspired short film! Entries are screened live at the Film Festival from 4:00–5:00 PM.</div>
+              </div>
+              <button class="btn btn-primary" onclick="openFlyout('film')"><i class="ti ti-send"></i> Submit Film</button>
+            </div>
+
+            <div class="contest-card">
+              <div class="contest-card-icon" style="background:var(--purple-light);color:var(--purple);"><i class="ti ti-palette"></i></div>
+              <div class="contest-card-body">
+                <div class="contest-card-title">Art Contest</div>
+                <div class="contest-card-desc">Show off your LPS fan art! Entries are featured and judged during the Art Contest from 3:30–4:00 PM.</div>
+              </div>
+              <button class="btn btn-blue" style="background:var(--purple);" onclick="openFlyout('art')"><i class="ti ti-send"></i> Submit Art</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Vendor Info -->
+      <section id="vendor">
+        <div class="section-header">
+          <div class="section-icon pink"><i class="ti ti-shopping-bag"></i></div>
+          <h2 class="section-title">Vendor &amp; Table Info</h2>
+        </div>
+        <div class="content-card">
+          <p style="color:var(--muted);font-size:0.95rem;margin-bottom:1.5rem;">Interested in having a table at LPSMinicon 2026? We have an auction booth and trading table available. Fill out the application below to get involved!</p>
+          <a href="#" class="btn btn-blue"><i class="ti ti-forms"></i> Vendor Application</a>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <div class="section-header">
+          <div class="section-icon purple"><i class="ti ti-help-circle"></i></div>
+          <h2 class="section-title">Frequently asked questions</h2>
+        </div>
+        <div class="content-card">
+          <details>
+            <summary>Is this event suitable for young children? <i class="ti ti-chevron-down"></i></summary>
+            <p>Absolutely! LPSMinicon is a family-friendly event designed with kids of all ages in mind. Children under 5 are free with a paying adult.</p>
+          </details>
+          <details>
+            <summary>Can I bring items to trade or sell? <i class="ti ti-chevron-down"></i></summary>
+            <p>Attendees are welcome to bring items to trade at the trading table. For the auction booth, please apply for a vendor table in the Vendor &amp; Table Info section above.</p>
+          </details>
+          <details>
+            <summary>Are tickets refundable? <i class="ti ti-chevron-down"></i></summary>
+            <p>Tickets may be transferred to another person but are non-refundable after purchase.</p>
+          </details>
+          <details>
+            <summary>Is there food available at the venue? <i class="ti ti-chevron-down"></i></summary>
+            <p>Yes! The event opens at noon with an Order &amp; Eat period before the program begins. Food options will be available throughout the event.</p>
+          </details>
+          <details>
+            <summary>Is cosplay/costume welcome? <i class="ti ti-chevron-down"></i></summary>
+            <p>Of course! Costumes and creative outfits inspired by LPS and related fandoms are warmly encouraged. All costumes must be family-appropriate.</p>
+          </details>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ══ Sidebar ══ -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-header"><i class="ti ti-layout-sidebar"></i> Quick links</div>
+        <ul class="sidebar-nav">
+          <li><a href="#schedule"><i class="ti ti-calendar"></i> Schedule</a></li>
+          <li><a href="#contests"><i class="ti ti-trophy"></i> Contests</a></li>
+          <li><a href="#contests" onclick="event.preventDefault();openFlyout('film')"><i class="ti ti-movie"></i> Submit Film</a></li>
+          <li><a href="#contests" onclick="event.preventDefault();openFlyout('art')"><i class="ti ti-palette"></i> Submit Art</a></li>
+          <li><a href="#contact"><i class="ti ti-mail"></i> Contact Info</a></li>
+          <li><a href="#vendor"><i class="ti ti-shopping-bag"></i> Vendor Info</a></li>
+          <li><a href="#tickets"><i class="ti ti-ticket"></i> Ticket Links</a></li>
+          <li><a href="#faq"><i class="ti ti-help-circle"></i> FAQ</a></li>
+        </ul>
+        <div class="sidebar-cta">
+          <a href="https://app.showslinger.com/v4/mini-lps-convention-littl?from=%2Fpromo_widget_v3%2Fcombo_widget%3Fid%3D31%26origin_url%3Dhttps%253A%252F%252Fwww-upstagecomedylounge-net.filesusr.com%252Fhtml%252Fbc6dbb_f5e3a8b3c29a627d58ee176b05579429.html%26secure_code%3D6a56b1c636&promo_widget_v3_id=31" class="btn btn-primary" target="_blank"><i class="ti ti-ticket"></i> Get Tickets</a>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-header"><i class="ti ti-info-circle"></i> At a glance</div>
+        <div class="sidebar-mini-info">
+          <div class="sidebar-mini-info-row"><i class="ti ti-calendar-event"></i> August 9, 2026</div>
+          <div class="sidebar-mini-info-row"><i class="ti ti-map-pin"></i> San Antonio, TX</div>
+          <div class="sidebar-mini-info-row"><i class="ti ti-users"></i> All ages welcome</div>
+          <div class="sidebar-mini-info-row"><i class="ti ti-ticket"></i> From $25</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card" id="contact">
+        <div class="sidebar-card-header"><i class="ti ti-mail"></i> Contact us</div>
+        <div class="sidebar-mini-info">
+          <p style="font-size:0.82rem;color:var(--muted);padding:0.5rem 0 0.75rem;line-height:1.6;">Questions? We'll get back to you within 48 hours.</p>
+          <div class="sidebar-mini-info-row"><i class="ti ti-mail"></i> hello@lpsminicon.com</div>
+          <div class="sidebar-mini-info-row" style="padding-bottom:0.5rem;"><i class="ti ti-brand-instagram"></i> @lpsminicon</div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="footer-brand"><em>LPS</em><span>Minicon</span></div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+        <li><a href="#contests">Contests</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#vendor">Vendors</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 LPSMinicon. Fan-run event. Not affiliated with Hasbro or Basic Fun.</p>
+    </div>
+  </footer>
+
+  <!-- ── Film Contest Flyout ── -->
+  <div class="flyout-overlay" id="film-overlay" onclick="closeFlyout('film')"></div>
+  <div class="flyout-panel" id="film-panel" role="dialog" aria-modal="true" aria-label="Film Contest Submission">
+    <div class="flyout-header">
+      <div class="flyout-title"><em>Film</em> Contest</div>
+      <button class="flyout-close" onclick="closeFlyout('film')" aria-label="Close panel"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="flyout-body" id="film-body">
+      <div class="flyout-rules">
+        <div class="flyout-rules-title"><i class="ti ti-clipboard-list"></i> Contest Rules</div>
+        <ol>
+          <li>Your film must feature Littlest Pet Shop toys or characters.</li>
+          <li>Maximum length: <strong>5 minutes</strong>.</li>
+          <li>Your video <strong>must be set to publicly viewable</strong> before submitting (YouTube, Vimeo, or Google Drive).</li>
+          <li>All content must be family-friendly and appropriate for all ages.</li>
+          <li>One entry per person.</li>
+          <li><strong>[Placeholder — deadline &amp; judging criteria to be added.]</strong></li>
+        </ol>
+      </div>
+      <form class="flyout-form" id="film-form" action="https://forminit.com/f/af08pl79as0" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="film-name">Your Name</label>
+          <input class="form-input" type="text" id="film-name" name="name" placeholder="First &amp; last name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="film-entry-title">Submission Title</label>
+          <input class="form-input" type="text" id="film-entry-title" name="submission_title" placeholder="What's your film called?" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="film-email">Email Address</label>
+          <input class="form-input" type="email" id="film-email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="film-url">Video Link</label>
+          <div class="url-field-wrap">
+            <i class="ti ti-link"></i>
+            <input class="form-input" type="url" id="film-url" name="video_url" placeholder="https://youtube.com/watch?v=..." required>
+          </div>
+          <span class="form-hint">YouTube, Vimeo, or Google Drive — make sure it's set to public before submitting!</span>
+        </div>
+        <input type="hidden" name="_gotcha" style="display:none">
+      </form>
+    </div>
+    <div class="form-success" id="film-success">
+      <i class="ti ti-circle-check"></i>
+      <div class="form-success-title">Film Submitted! 🎬</div>
+      <div class="form-success-sub">Thanks for entering the Film Contest!<br>We'll be in touch at the email you provided.</div>
+    </div>
+    <div class="flyout-actions" id="film-actions">
+      <button class="btn btn-cancel" onclick="closeFlyout('film')"><i class="ti ti-x"></i> Cancel</button>
+      <button class="btn btn-primary" id="film-submit-btn" onclick="submitFlyout('film')"><i class="ti ti-send"></i> Submit Entry</button>
+    </div>
+  </div>
+
+  <!-- ── Art Contest Flyout ── -->
+  <div class="flyout-overlay" id="art-overlay" onclick="closeFlyout('art')"></div>
+  <div class="flyout-panel" id="art-panel" role="dialog" aria-modal="true" aria-label="Art Contest Submission">
+    <div class="flyout-header">
+      <div class="flyout-title" style="color:#fff;"><em>Art</em> Contest</div>
+      <button class="flyout-close" onclick="closeFlyout('art')" aria-label="Close panel"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="flyout-body" id="art-body">
+      <div class="flyout-rules">
+        <div class="flyout-rules-title"><i class="ti ti-clipboard-list"></i> Contest Rules</div>
+        <ol>
+          <li>Artwork must feature Littlest Pet Shop toys or characters.</li>
+          <li>Digital or photographed traditional art both accepted.</li>
+          <li>All content must be family-friendly and appropriate for all ages.</li>
+          <li>One entry per person.</li>
+          <li>Accepted formats: JPG, PNG, or GIF — max <strong>10 MB</strong>.</li>
+          <li><strong>[Placeholder — deadline &amp; judging criteria to be added.]</strong></li>
+        </ol>
+      </div>
+      <form class="flyout-form" id="art-form" action="https://forminit.com/f/lcbwqg98cq7" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label class="form-label" for="art-name">Your Name</label>
+          <input class="form-input" type="text" id="art-name" name="name" placeholder="First &amp; last name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="art-entry-title">Submission Title</label>
+          <input class="form-input" type="text" id="art-entry-title" name="submission_title" placeholder="What's your artwork called?" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="art-email">Email Address</label>
+          <input class="form-input" type="email" id="art-email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Artwork</label>
+          <div class="drop-zone" id="art-drop-zone"
+               onclick="document.getElementById('art-file-input').click()"
+               ondragover="handleDragOver(event)"
+               ondragleave="handleDragLeave(event)"
+               ondrop="handleDrop(event)">
+            <i class="ti ti-photo-up" id="drop-icon"></i>
+            <div class="drop-zone-label" id="drop-label">Drag your image here</div>
+            <div class="drop-zone-sub" id="drop-sub">or click to browse &mdash; JPG, PNG, GIF up to 10&nbsp;MB</div>
+            <div class="drop-zone-filename" id="drop-filename" style="display:none;"></div>
+          </div>
+          <input type="file" id="art-file-input" name="artwork" accept="image/jpeg,image/png,image/gif" required onchange="handleFileSelect(this)">
+        </div>
+        <input type="hidden" name="_gotcha" style="display:none">
+      </form>
+    </div>
+    <div class="form-success" id="art-success">
+      <i class="ti ti-circle-check"></i>
+      <div class="form-success-title">Art Submitted! 🎨</div>
+      <div class="form-success-sub">Beautiful! Thanks for entering the Art Contest.<br>We'll be in touch at the email you provided.</div>
+    </div>
+    <div class="flyout-actions" id="art-actions">
+      <button class="btn btn-cancel" onclick="closeFlyout('art')"><i class="ti ti-x"></i> Cancel</button>
+      <button class="btn btn-primary" id="art-submit-btn" style="background:var(--purple);" onclick="submitFlyout('art')"><i class="ti ti-send"></i> Submit Entry</button>
+    </div>
+  </div>
+
+  <!-- ── Food Menu Modal ── -->
+  <div id="menu-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title"><i class="ti ti-tools-kitchen-2" style="font-size:1.1rem;vertical-align:-2px;color:var(--teal);margin-right:6px;"></i> Basket Bites &amp; Hangry-Cures</div>
+        <button class="modal-close" onclick="document.getElementById('menu-modal').classList.remove('open')" aria-label="Close menu"><i class="ti ti-x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Fried Pickles</div><div class="menu-item-desc">A hot basket of crispy fried pickle slices + side of ranch.</div></div>
+          <div class="menu-item-price">$6.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Chips &amp; Salsa</div><div class="menu-item-desc">A generous basket of crispy chips &amp; salsa.</div></div>
+          <div class="menu-item-price">$3.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Mozzarella Sticks</div><div class="menu-item-desc">(4) Classic, crispy mozzarella sticks + side of marinara or ranch.</div></div>
+          <div class="menu-item-price">$6.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Cheese Nachos</div><div class="menu-item-desc">Classic cheesy nachos + side of jalapeños.</div></div>
+          <div class="menu-item-price">$8.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Buffalo Chicken Bites</div><div class="menu-item-desc">Crispy buffalo chicken bites tossed in buffalo sauce &amp; served w/ potato chips + side of ranch.</div></div>
+          <div class="menu-item-price">$11.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">BBQ Chicken Bites</div><div class="menu-item-desc">Crispy BBQ chicken bites served w/ potato chips + side of ranch.</div></div>
+          <div class="menu-item-price">$11.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Southern Chicken Bites</div><div class="menu-item-desc">Classic Southern-style, crispy chicken bites &amp; served w/ potato chips + side of ranch.</div></div>
+          <div class="menu-item-price">$11.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Brisket Slider Bites</div><div class="menu-item-desc">Two sliders stuffed with tender brisket &amp; BBQ sauce, served w/ potato chips.</div></div>
+          <div class="menu-item-price">$12.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Smoked Brisket Nachos</div><div class="menu-item-desc">Loaded nachos with smoked brisket &amp; melted cheese + side of jalapeños &amp; sour cream.</div></div>
+          <div class="menu-item-price">$12.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info"><div class="menu-item-name">Smoked Brisket Tacos</div><div class="menu-item-desc">(2) Soft tacos filled with smoked brisket &amp; pico de gallo + side of salsa.</div></div>
+          <div class="menu-item-price">$7.99</div>
+        </div>
+        <p class="menu-note">⚡ Additional condiments $0.50/ea.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    // ── Contest Flyouts ──────────────────────────────
+    function openFlyout(type) {
+      document.getElementById(type + '-overlay').classList.add('open');
+      document.getElementById(type + '-panel').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFlyout(type) {
+      document.getElementById(type + '-overlay').classList.remove('open');
+      document.getElementById(type + '-panel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    async function submitFlyout(type) {
+      const form = document.getElementById(type + '-form');
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      const btn = document.getElementById(type + '-submit-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2"></i> Submitting…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!res.ok) throw new Error();
+        document.getElementById(type + '-body').style.display = 'none';
+        document.getElementById(type + '-actions').style.display = 'none';
+        document.getElementById(type + '-success').classList.add('visible');
+      } catch {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ti ti-send"></i> Submit Entry';
+        alert('Something went wrong — please try again or email us at hello@lpsminicon.com');
+      }
+    }
+
+    // ── Art drop zone ────────────────────────────────
+    function handleDragOver(e) {
+      e.preventDefault();
+      document.getElementById('art-drop-zone').classList.add('drag-over');
+    }
+
+    function handleDragLeave() {
+      document.getElementById('art-drop-zone').classList.remove('drag-over');
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      document.getElementById('art-drop-zone').classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (!file) return;
+      const dt = new DataTransfer();
+      dt.items.add(file);
+      document.getElementById('art-file-input').files = dt.files;
+      showFileName(file.name);
+    }
+
+    function handleFileSelect(input) {
+      if (input.files[0]) showFileName(input.files[0].name);
+    }
+
+    function showFileName(name) {
+      const zone = document.getElementById('art-drop-zone');
+      zone.classList.add('has-file');
+      document.getElementById('drop-icon').className = 'ti ti-circle-check';
+      document.getElementById('drop-label').textContent = 'File ready!';
+      document.getElementById('drop-sub').style.display = 'none';
+      const fn = document.getElementById('drop-filename');
+      fn.textContent = name;
+      fn.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
